@@ -1,11 +1,11 @@
 const Posts = require("../models/postsModel");
 const { post } = require("../routes/userRouter");
-const { postValidation } = require("../validation/postValid");
+const { postValidation, updateValidation } = require("../validation/postValid");
 
 const getAllPosts = async (req, res) => {
   let post;
   try {
-    post = await posts.find({});
+    post = await Posts.find({});
   } catch (error) {
     console.log(error);
   }
@@ -35,20 +35,75 @@ const createPost = async (req, res) => {
       description: req.body.description,
       image: req.body.image,
       category: req.body.category,
-      date:new Date( req.body.date),
-      user:req.body.user,
-
+      date: new Date(req.body.date),
+      user: req.body.user,
     });
 
-    post=await newPost.save()
+    post = await newPost.save();
   } catch (error) {
     console.log(error);
   }
 
-  return res.status(200).json(post)
+  return res.status(200).json(post);
+};
+
+const getPostById = async (req, res) => {
+  let post;
+
+  try {
+    post = await Posts.findById(req.params.id);
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (!post) {
+    return res.status(400).json("post no found");
+  }
+  return res.status(200).json(post);
+};
+const updatePost = async (req, res) => {
+  const { error } = updateValidation(req.body);
+  if (error) {
+    return res.status(400).json(error.details[0].message);
+  }
+
+  let post;
+  try {
+    post = await Posts.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      description: req.body.description,
+      image: req.body.image,
+      category: req.body.category,
+      date: new Date(req.body.date),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  if (!post) {
+    return res.status(400).json("post not found");
+  }
+  return res.status(200).json(post);
+};
+
+const deletePost = async (req, res) => {
+  let post;
+  try {
+    post = await Posts.findByIdAndRemove(req.params.id);
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (!post) {
+    return res.status(400).json("post not found");
+  }
+
+  return res.status(200).json("post deleted");
 };
 
 module.exports = {
   getAllPosts,
   createPost,
+  getPostById,
+  updatePost,
+  deletePost
 };

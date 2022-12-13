@@ -27,7 +27,8 @@ date:{
     required: true,
 },
   users:[{
-    type:String,
+    type:mongoose.Types.ObjectId,
+    ref:"users",
     required:true,
     
   }]

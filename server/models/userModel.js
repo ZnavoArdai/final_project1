@@ -23,7 +23,8 @@ const users = new Schema({
   },
 
   posts:[{
-    type:String,
+    type:mongoose.Types.ObjectId,
+    ref:"posts"
     
   }]
 });
