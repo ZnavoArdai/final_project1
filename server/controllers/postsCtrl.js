@@ -1,5 +1,8 @@
 const Posts = require("../models/postsModel");
-const { post } = require("../routes/userRouter");
+const User = require("../models/userModel");
+
+const mongoose=require("mongoose")
+
 const { postValidation, updateValidation } = require("../validation/postValid");
 
 const getAllPosts = async (req, res) => {
@@ -28,21 +31,42 @@ const createPost = async (req, res) => {
     return res.status(400).json(error.details[0].message);
   }
 
+  let userExist;
+  try {
+    userExist=await User.findById(req.body.users)
+
+  } catch (error) {
+    console.log(error)
+  }
+  if(!userExist){
+    return res.status(400).json("user not exist");
+
+  }
+  
+
   let post;
   try {
-    const newPost = new Posts({
+     post = new Posts({
       title: req.body.title,
       description: req.body.description,
       image: req.body.image,
       category: req.body.category,
       date: new Date(req.body.date),
-      user: req.body.user,
+      users: req.body.users,
     });
 
-    post = await newPost.save();
+    const session= await mongoose.startSession();
+    session.startTransaction();
+
+    userExist.posts.push(post)
+    await userExist.save({session})
+    post = await post.save({session});
+    session.commitTransaction();
   } catch (error) {
     console.log(error);
   }
+
+ 
 
   return res.status(200).json(post);
 };
@@ -88,14 +112,21 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
   let post;
   try {
+    const session=await mongoose.startSession();
+    session.startTransaction();
+    post=await Posts.findById(req.params.id).populate("users");
+   post.users.posts.pull(post)
+    await post.users.save({session})
     post = await Posts.findByIdAndRemove(req.params.id);
+    session.commitTransaction()
+
   } catch (error) {
     console.log(error);
   }
 
-  if (!post) {
-    return res.status(400).json("post not found");
-  }
+  // if (!post) {
+  //   return res.status(400).json("post not found");
+  // }
 
   return res.status(200).json("post deleted");
 };

@@ -25,7 +25,8 @@ const register = async (req, res) => {
   const newUser=new users({
     name:req.body.name,
     email:req.body.email,
-    password:hashedPassword
+    password:hashedPassword,
+    posts:[]
   })
   try {
     const saveUser = await newUser.save();
@@ -57,7 +58,26 @@ const login = async (req, res) => {
    return res.status(200).json({id:existUser.id,massage:"login successfully"});
 
   };
+  const getAllUsers = async (req, res) => {
+    let allUsaers;
+    try {
+      allUsaers = await users.find({});
+    } catch (error) {
+      console.log(error);
+    }
+  
+    if (!allUsaers) {
+      return res.status(400).json("post not found");
+    }
+  
+    if (allUsaers.length == 0) {
+      return res.status(400).json("pos collection empty");
+    }
+  
+    return res.status(200).json({ allUsaers });
+  };
 module.exports = {
   register,
-  login
+  login,
+  getAllUsers
 };

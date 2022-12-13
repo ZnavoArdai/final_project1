@@ -1,3 +1,4 @@
+const { type } = require("@hapi/joi/lib/extend");
 const mongoose = require("mongoose");
 
 const Schema = require("mongoose").Schema;
@@ -24,7 +25,8 @@ const users = new Schema({
 
   posts:[{
     type:mongoose.Types.ObjectId,
-    ref:"posts"
+    ref:"posts",
+
     
   }]
 });
