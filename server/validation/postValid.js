@@ -1,13 +1,14 @@
 const Joi = require("@hapi/joi");
 
 const postValidation = (data) => {
+
   const schema = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
+    category: Joi.string().required(),
     date: Joi.string().required(),
     image: Joi.string().required(),
-    category: Joi.string().required(),
-    users:Joi.required(),
+    user:Joi.string().required(),
 
   });
 
@@ -19,10 +20,10 @@ const updateValidation = (data) => {
   const schema = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
+    category: Joi.string().required(),
     date: Joi.string().required(),
     image: Joi.string().required(),
-    category: Joi.string().required(),
-
+    user:Joi.string().required(),
   });
 
   return schema.validate(data);

@@ -1,0 +1,14 @@
+.navbar {
+  background-color: rgb(0, 0, 0, 0)!important;
+  min-height: 12vh;
+}
+
+.navbar-bg {
+  background-color: #0d0d0d !important;
+  box-shadow: 5px 5px #b8ceed;
+  transition: 0.5s ease-in-out;
+}
+.main{
+    min-height: 150vh;
+    background-color: #25315b
+}

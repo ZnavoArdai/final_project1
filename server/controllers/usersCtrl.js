@@ -61,7 +61,7 @@ const login = async (req, res) => {
   const getAllUsers = async (req, res) => {
     let allUsaers;
     try {
-      allUsaers = await users.find({});
+      allUsaers = await users.find();
     } catch (error) {
       console.log(error);
     }
