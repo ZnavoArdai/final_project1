@@ -1,0 +1,14 @@
+.top{
+    display: flex;
+
+
+}
+.avatar>img{
+    border-radius: 50%
+}
+.imgtop{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%
+
+}
