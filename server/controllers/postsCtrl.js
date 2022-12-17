@@ -25,7 +25,7 @@ const getAllPosts = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const { title, description, location, date, image, user } = req.body;
+  const { title, description, category, date, image, user } = req.body;
 
   const {error}=postValidation(req.body)
   if (error) {
@@ -50,7 +50,7 @@ const createPost = async (req, res) => {
       title,
       description,
       image,
-      location,
+      category,
       date: new Date(`${date}`),
       user,
     });

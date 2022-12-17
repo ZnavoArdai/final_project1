@@ -1,9 +1,26 @@
-import React from 'react'
+import React from "react";
+import SignIn from "./signIn";
+import "./Auth.css";
+import SingUp from "./SingUp";
+import { useState } from "react";
 
 const Auth = () => {
-  return (
-    <div className='main'>Auth</div>
-  )
-}
+  const [isSingIn, setIsSingIn] = useState(false);
 
-export default Auth
+  const handelSingIn = () => {
+    setIsSingIn(!isSingIn);
+  };
+
+
+  return (
+    <div className="main">
+      {isSingIn ? (
+        <SignIn handelSingIn={handelSingIn} />
+      ) : (
+        <SingUp handelSingIn={handelSingIn} />
+      )}
+    </div>
+  );
+};
+
+export default Auth;

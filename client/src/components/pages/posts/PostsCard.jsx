@@ -4,7 +4,7 @@ import "./Posts.css";
 import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 
-function PostsCard() {
+function PostsCard({post}) {
   return (
     <Card
       style={{ width: "45rem" }}
@@ -20,8 +20,8 @@ function PostsCard() {
         </div>
         <div>
           <div className="mx-3">
-            <span className="d-block"> card titel</span>
-            <span className="text-muted">card time</span>
+            <span className="d-block"> {post.category}</span>
+            <span className="text-muted">{new Date (`${post.date}`).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
@@ -29,14 +29,13 @@ function PostsCard() {
       <Card.Img
         variant="top"
         className="img-fluid"
-        src="https://res.cloudinary.com/practicaldev/image/fetch/s--OZWWRqhw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/do251yaf8msgoojijqyp.PNG"
+        src={post.image}
       />
       <Card.Body className="p-2">
-        <Card.Text className="fs-5">Some quick</Card.Text>
+        <Card.Text className="fs-5">{post.title}</Card.Text>
         <hr />
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        {post.description}
         </Card.Text>
         <Card.Text className="float-end">
         <a className="mx-2 btn text-warning " >
