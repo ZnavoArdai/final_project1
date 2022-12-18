@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { register } from "../../../service/userServices";
 
 export const SingUp = ({ handelSingIn }) => {
   const [signUpForm, setSignUpForm] = useState({
@@ -10,8 +11,7 @@ export const SingUp = ({ handelSingIn }) => {
     password: "",
     secundPassWord: "",
   });
-  const [error, setError] = useState({})
-
+  const [error, setError] = useState({});
 
   const handeFormChange = (e) => {
     setSignUpForm({ ...signUpForm, [e.target.name]: e.target.value });
@@ -20,9 +20,13 @@ export const SingUp = ({ handelSingIn }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    validateForm(signUpForm);
-    setError( validateForm(signUpForm)
-    )
+    setError(validateForm(signUpForm));
+    console.log(error);
+    if (Object.keys(error).length == 0) {
+     register(signUpForm)
+  
+    document.getElementById("registerSuccess").innerText="Register done successfully"
+    }
   };
 
   const validateForm = (value) => {
@@ -33,10 +37,9 @@ export const SingUp = ({ handelSingIn }) => {
     }
     if (!value.password) {
       eror.password = "password required";
+    } else if (value.password.length < 4) {
+      eror.password = "password to short";
     }
-   else if (value.password.length<4) {
-        eror.password = "password to short";
-      }
     if (value.secundPassWord !== value.password) {
       eror.secundPassWord = "password not confirmed";
     }
@@ -49,7 +52,7 @@ export const SingUp = ({ handelSingIn }) => {
     return eror;
   };
   return (
-    <div className="sinup">
+    <div className="sinup mb-5">
       <Form className="card p-5">
         <Form.Text className="fs-6">
           <h3>Register</h3>
@@ -83,8 +86,8 @@ export const SingUp = ({ handelSingIn }) => {
             onChange={(e) => handeFormChange(e)}
           />
         </Form.Group>
-       <span className="text-danger">{error.password}</span> 
-         <Form.Group className="mb-3" controlId="secundPassWord">
+        <span className="text-danger">{error.password}</span>
+        <Form.Group className="mb-3" controlId="secundPassWord">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="text"
@@ -96,13 +99,17 @@ export const SingUp = ({ handelSingIn }) => {
         <span className="text-danger">{error.secundPassWord}</span>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Button className="w-50 rounded-5" onClick={(e)=>submitForm(e)}>Submit</Button>
+          <Button className="w-50 rounded-5" onClick={(e) => submitForm(e)}>
+            Submit
+          </Button>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Button className="w-50 rounded-5" onClick={handelSingIn}>
             Sing In
           </Button>
         </Form.Group>
+
+        <h4 id="registerSuccess" className="text-success"></h4>
       </Form>
     </div>
   );

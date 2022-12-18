@@ -18,7 +18,7 @@ const register = async (req, res) => {
 
   const emailExist = await users.findOne({ email: req.body.email });
   if (emailExist){
-    return res.status(400).json({massage:"email already exist"});
+    return res.status(201).json({massage:"email already exist"});
   }
   const salt= await bcrypt.genSalt(8);
   const hashedPassword= await bcrypt.hash(req.body.password,salt)
@@ -30,7 +30,7 @@ const register = async (req, res) => {
   })
   try {
     const saveUser = await newUser.save();
-    res.send(saveUser);
+    res.status(200).json(saveUser);
   } catch (error) {
  res.status(400).json({ error });
 
