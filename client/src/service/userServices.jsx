@@ -25,4 +25,6 @@ const res=await axios.post("user/api/login",{
 
 const data=await res.data;
 
+return data
+
 }

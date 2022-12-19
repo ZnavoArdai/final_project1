@@ -1,14 +1,36 @@
-.top{
-    display: flex;
-
-
+.top {
+  display: flex;
 }
-.avatar>img{
-    border-radius: 50%
+.avatar > img {
+  border-radius: 50%;
 }
-.imgtop{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%
+.imgtop {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+/* new post */
+.update {
+  margin: 5vh auto;
+  width: 40vw;
+}
+.update>Form{
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5vh;
+    }
+.input {
+  border: none;
+}
+.newpostTitile {
+  display: flex;
+  justify-content: center;
+}
 
+
+@media screen and (max-width:765px) {
+    .update {
+        width: 90vw;
+      }
+ 
 }

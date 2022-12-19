@@ -3,8 +3,22 @@ import Card from "react-bootstrap/Card";
 import "./Posts.css";
 import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { get } from "mongoose";
 
 function PostsCard({post}) {
+
+  const isLoggedUser=()=>{
+    if(localStorage.getItem("userId")==post.user._id){
+      return true
+    }
+  
+      return false
+  
+  }
+
+  console.log(post.user)
+
+
   return (
     <Card
       style={{ width: "45rem" }}
@@ -37,15 +51,22 @@ function PostsCard({post}) {
         <Card.Text>
         {post.description}
         </Card.Text>
-        <Card.Text className="float-end">
-        <a className="mx-2 btn text-warning " >
+
+       
+        {isLoggedUser() ? (
+           <Card.Text className="float-end">
+
+            <a className="mx-2 btn text-warning " >
             <MdOutlineModeEditOutline size={25}  />
           </a>
+          
           <a className="mx-2 btn text-danger " >
             <FiDelete  size={25}/>
           </a>
-         
-        </Card.Text>
+          
+          </Card.Text>
+        
+      ):""}
       </Card.Body>
     </Card>
   );

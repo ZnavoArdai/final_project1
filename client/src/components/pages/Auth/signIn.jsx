@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { loging } from "../../../service/userServices";
 
+import {loggedIn} from "../../../store/userReducer"
+
 export const SignIn = ({handelSingIn}) => {
+    const navigate=useNavigate()
     const [signInForm, setSingInForm] = useState({
         email: "",
         password: "",
   
       });
       const [error, setError] = useState({})
-    
+      const dispatch=useDispatch()
+
     
       const handeFormChange = (e) => {
+
+
         setSingInForm({ ...signInForm, [e.target.name]: e.target.value });
         console.log(signInForm);
       };
@@ -23,7 +30,7 @@ export const SignIn = ({handelSingIn}) => {
         setError( validateForm(signInForm))
 
         if(Object.keys(error).length==0){
-            loging(signInForm)
+            loging(signInForm).then((data)=>localStorage.setItem("userId",data.id)).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/"))
         }
       };
     
