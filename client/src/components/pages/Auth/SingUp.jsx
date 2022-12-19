@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { object } from "@hapi/joi";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
@@ -12,6 +13,8 @@ export const SingUp = ({ handelSingIn }) => {
     secundPassWord: "",
   });
   const [error, setError] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
 
   const handeFormChange = (e) => {
     setSignUpForm({ ...signUpForm, [e.target.name]: e.target.value });
@@ -21,13 +24,25 @@ export const SingUp = ({ handelSingIn }) => {
   const submitForm = (e) => {
     e.preventDefault();
     setError(validateForm(signUpForm));
-    console.log(error);
+    setIsSubmit(true)
+    console.log(Object.keys(error).length)
+
     if (Object.keys(error).length == 0) {
+
      register(signUpForm)
-  
-    document.getElementById("registerSuccess").innerText="Register done successfully"
     }
   };
+
+  useEffect(()=>{
+    if (Object.keys(error).length === 0 && isSubmit) {
+
+        setTimeout(()=>{
+            handelSingIn()
+        },3000)
+
+       }
+
+  },[error])
 
   const validateForm = (value) => {
     const eror = {};
@@ -108,8 +123,9 @@ export const SingUp = ({ handelSingIn }) => {
             Sing In
           </Button>
         </Form.Group>
-
-        <h4 id="registerSuccess" className="text-success"></h4>
+{
+    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831" alt="" />):""
+}
       </Form>
     </div>
   );
