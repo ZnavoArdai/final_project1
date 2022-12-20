@@ -6,7 +6,7 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { get } from "mongoose";
 import { Link } from "react-router-dom";
 
-function PostsCard({post}) {
+function PostsCard({post,deleteBtn}) {
 
   const isLoggedUser=()=>{
     if(localStorage.getItem("userId")==post.user._id){
@@ -32,6 +32,7 @@ function PostsCard({post}) {
             width={50}
             src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=685"
           />
+          
         </div>
         <div>
           <div className="mx-3">
@@ -61,7 +62,7 @@ function PostsCard({post}) {
             <MdOutlineModeEditOutline size={25}    />
           </a>
           
-          <a className="mx-2 btn text-danger " >
+          <a className="mx-2 btn text-danger " onClick={()=>deleteBtn(post._id)} >
             <FiDelete  size={25}/>
           </a>
           

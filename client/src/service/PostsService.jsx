@@ -46,3 +46,12 @@ export const getPostDetails = async (some) => {
     const resData = await res.data;
     return resData;
   };
+
+  export const deletePost=async(id)=>{
+
+    const res=await axios.delete(`/posts/api/${id}`).catch((error)=>console.log(error))
+
+
+    const data=await res.date;
+    
+  }
