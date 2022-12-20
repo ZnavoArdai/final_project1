@@ -13,7 +13,7 @@ const [posts,setPosts]=useState()
     getAllPosts().then((res)=>setPosts(res?.post))
   },[])
   return (
-    <div className='main d-flex justify-content-center container-fluid row'>
+    <div className='main d-flex justify-content-center container-fluid row mt-5'>
 
 {posts&&posts.map((post,index)=> {
 return(

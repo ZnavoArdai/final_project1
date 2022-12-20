@@ -21,9 +21,7 @@ const updateValidation = (data) => {
     title: Joi.string().required(),
     description: Joi.string().required(),
     category: Joi.string().required(),
-    date: Joi.string().required(),
     image: Joi.string().required(),
-    user:Joi.string().required(),
   });
 
   return schema.validate(data);

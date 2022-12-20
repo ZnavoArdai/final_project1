@@ -4,6 +4,7 @@ import "./Posts.css";
 import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { get } from "mongoose";
+import { Link } from "react-router-dom";
 
 function PostsCard({post}) {
 
@@ -56,8 +57,8 @@ function PostsCard({post}) {
         {isLoggedUser() ? (
            <Card.Text className="float-end">
 
-            <a className="mx-2 btn text-warning " >
-            <MdOutlineModeEditOutline size={25}  />
+            <a className="mx-2 btn text-warning " href={`/posts/api/${post._id}`}  >
+            <MdOutlineModeEditOutline size={25}    />
           </a>
           
           <a className="mx-2 btn text-danger " >

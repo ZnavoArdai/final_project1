@@ -15,7 +15,7 @@ const logedInLinks = ["HOME","POSTS", "NEW POST","PROFILE"];
 const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
   return (
-    <Navbar collapseOnSelect expand="lg"  className=" text-dark navbarcontain">
+    <Navbar collapseOnSelect expand="lg"  className="  fixed-top text-dark navbarcontain">
       <Container>
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

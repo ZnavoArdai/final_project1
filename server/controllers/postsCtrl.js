@@ -71,19 +71,20 @@ const createPost = async (req, res) => {
   return res.status(201).json({ post });
 };
 
-const getPostById = async (req, res) => {
+ const getPostById = async (req, res) => {
+  const id = req.params.id;
+
   let post;
 
   try {
-    post = await Posts.findById(req.params.id);
-  } catch (error) {
-    console.log(error);
+    post = await Posts.findById(id);
+  } catch (err) {
+    return console.log(err);
   }
-
   if (!post) {
-    return res.status(400).json("post no found");
+    return res.status(404).json({ message: "No post found" });
   }
-  return res.status(200).json(post);
+  return res.status(200).json({ post });
 };
 const updatePost = async (req, res) => {
   const { error } = updateValidation(req.body);
@@ -98,7 +99,6 @@ const updatePost = async (req, res) => {
       description: req.body.description,
       image: req.body.image,
       category: req.body.category,
-      date: new Date(req.body.date),
     });
   } catch (error) {
     console.log(error);

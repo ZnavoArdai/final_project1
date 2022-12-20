@@ -5,7 +5,7 @@ import SingUp from "./SingUp";
 import { useState } from "react";
 
 const Auth = () => {
-  const [isSingIn, setIsSingIn] = useState(false);
+  const [isSingIn, setIsSingIn] = useState(true);
 
   const handelSingIn = () => {
     setIsSingIn(!isSingIn);

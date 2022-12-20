@@ -27,3 +27,22 @@ export const newPost = async(someData) => {
   const data=await res.data;
   return data
 };
+
+export const getPostDetails = async (some) => {
+    const res = await axios.get(`/posts/api/${some}`).catch((err) => console.log(err));
+   
+    const resData = await res.data;
+    return resData;
+  };
+
+  export const updatePostDetails = async (some,id) => {
+    const res = await axios.put(`/posts/api/${id}`,{
+        title: some.title,
+        description: some.subject,
+        image: some.image,
+        category: some.category,
+    }).catch((err) => console.log(err));
+   
+    const resData = await res.data;
+    return resData;
+  };
