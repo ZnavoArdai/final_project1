@@ -22,6 +22,9 @@ const users = new Schema({
     min: 10,
     max: 99999,
   },
+   image: {
+    type: String,
+  },
 
   posts:[{
     type:mongoose.Types.ObjectId,

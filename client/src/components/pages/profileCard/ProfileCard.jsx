@@ -1,49 +1,32 @@
-import Button from "react-bootstrap/Button";
+
 import Card from "react-bootstrap/Card";
-import "./Posts.css";
 import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { get } from "mongoose";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { loggedIn } from "../../../store/userReducer";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { deletePost } from "../../../service/PostsService";
 
-function PostsCard({post,deleteBtn}) {
-  const dispatch=useDispatch()
 
-  const isLoggedUser=()=>{
-    if(localStorage.getItem("userId")==post.user._id){
-
-      return true
-    }
+function ProfileCard({post}) {
+const navigate=useNavigate()
+  const deleteBtn=(id)=>{
   
-      return false
-  
-  }
+    deletePost(id)
 
-  
+    setTimeout(()=>{
 
+        window.location.reload()
+    },1000)
 
     
-  
-  console.log(post.user)
-
-
+    
+  }
   return (
     <Card
       style={{ width: "45rem" }}
       className="mt-4 mb-4 p-2 border-0 cardContainer"
     >
       <div className="top ">
-        <div className="avatar p-2">
-          <img
-            className=""
-            width={50}
-            src={post.user.image?post.user.image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-fMXEWyzl7MNd3Q15JOeyzHxasfVIHK6K_A&usqp=CAU"}
-          />
-          
-        </div>
+        
         <div>
           <div className="mx-3">
             <span className="d-block"> {post.category}</span>
@@ -63,12 +46,10 @@ function PostsCard({post,deleteBtn}) {
         <hr />
         <Card.Text>
         {post.description}
-        <hr />
-<span>author:{""}{post.user.name}</span>
         </Card.Text>
 
        
-        {isLoggedUser() ? (
+
            <Card.Text className="float-end">
 
             <a className="mx-2 btn text-warning " href={`/posts/api/${post._id}`}  >
@@ -80,11 +61,9 @@ function PostsCard({post,deleteBtn}) {
           </a>
           
           </Card.Text>
-        
-      ):""}
       </Card.Body>
     </Card>
   );
 }
 
-export default PostsCard;
+export default ProfileCard;

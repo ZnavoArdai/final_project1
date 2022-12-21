@@ -7,6 +7,7 @@ export const register = async (signUpForm) => {
       name: signUpForm.name,
       email: signUpForm.email,
       password: signUpForm.password,
+      image:signUpForm.image
     })
     .catch((error) => console.log(error));
 

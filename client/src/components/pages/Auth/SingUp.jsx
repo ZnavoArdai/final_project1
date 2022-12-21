@@ -11,6 +11,7 @@ export const SingUp = ({ handelSingIn }) => {
     email: "",
     password: "",
     secundPassWord: "",
+    image:""
   });
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -75,9 +76,18 @@ export const SingUp = ({ handelSingIn }) => {
         <Form.Group className="mb-3" controlId="userName">
           <Form.Label>Name</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             placeholder="User Name"
             name="name"
+            onChange={(e) => handeFormChange(e)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="userName">
+          <Form.Label>Image</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder=" image"
+            name="image"
             onChange={(e) => handeFormChange(e)}
           />
         </Form.Group>
