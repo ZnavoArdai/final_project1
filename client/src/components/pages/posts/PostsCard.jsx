@@ -5,11 +5,16 @@ import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { get } from "mongoose";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loggedIn } from "../../../store/userReducer";
+import { useEffect } from "react";
 
 function PostsCard({post,deleteBtn}) {
+  const dispatch=useDispatch()
 
   const isLoggedUser=()=>{
     if(localStorage.getItem("userId")==post.user._id){
+
       return true
     }
   
@@ -17,6 +22,11 @@ function PostsCard({post,deleteBtn}) {
   
   }
 
+  
+
+
+    
+  
   console.log(post.user)
 
 

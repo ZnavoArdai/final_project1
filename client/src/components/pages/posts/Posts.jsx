@@ -24,6 +24,8 @@ const deleteBtn=(id)=>{
     setAlert(false)
   },3000 );
 }
+
+
   
   return (
     <div className='main d-flex justify-content-center container-fluid row mt-5' id='postsShowCase'>
@@ -37,7 +39,7 @@ const deleteBtn=(id)=>{
 
       </div>
 
-{posts&&posts.map((post,index)=> {
+{posts && posts.map((post,index)=> {
 return(
   <div className='col-12 d-flex justify-content-center'>
 <PostsCard post={post} key={index} deleteBtn={deleteBtn} />

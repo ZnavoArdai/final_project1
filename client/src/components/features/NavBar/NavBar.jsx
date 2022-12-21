@@ -32,16 +32,14 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
             </Nav.Link> 
               )
             })
-            :(defaultLinks.map((link)=>{
+            :( defaultLinks.map((link)=>{
               return (
                 <Nav.Link as={Link} to={`/${link=="HOME" ? "":link}`}>
               {link}
             </Nav.Link> 
               )
             }))}
-            {/* <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link> */}
+           
             
           </Nav>
         </Navbar.Collapse>

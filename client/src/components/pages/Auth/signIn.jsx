@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
@@ -32,7 +32,11 @@ export const SignIn = ({handelSingIn}) => {
         if(Object.keys(error).length==0){
             loging(signInForm).then((data)=>localStorage.setItem("userId",data.id)).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/"))
         }
+
+        
       };
+
+  
     
       const validateForm = (value) => {
         const eror = {};

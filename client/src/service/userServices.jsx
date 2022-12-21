@@ -28,3 +28,10 @@ const data=await res.data;
 return data
 
 }
+
+export const getUserById= async (id)=>{
+  const res= await fetch(`http://localhost:6060/user/api/${id}`)
+
+  const newData = await res.json();
+  return newData;
+} 

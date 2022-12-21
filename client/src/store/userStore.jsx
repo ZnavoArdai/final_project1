@@ -4,6 +4,6 @@ import authReducer from "./userReducer"
 
 export const userStore=configureStore({
 
-reducer:authReducer
+reducer:authReducer,
 })
 
