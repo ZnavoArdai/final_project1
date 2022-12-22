@@ -29,6 +29,7 @@ const posts = new Schema({
     ref: "users",
     required: true,
   },
+ 
 });
 
 module.exports = mongoose.model("posts", posts);

@@ -41,7 +41,7 @@ const deleteBtn=(id)=>{
 
 {posts && posts.map((post,index)=> {
 return(
-  <div className='col-12 d-flex justify-content-center'>
+  <div className='col-12 d-flex justify-content-center '>
 <PostsCard post={post} key={index} deleteBtn={deleteBtn} />
   </div>
 )}

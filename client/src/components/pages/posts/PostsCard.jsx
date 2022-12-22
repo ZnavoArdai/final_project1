@@ -31,8 +31,8 @@ function PostsCard({post,deleteBtn}) {
 
 
   return (
-    <Card
-      style={{ width: "45rem" }}
+    <Card style={{width:"55rem"}}
+      
       className="mt-4 mb-4 p-2 border-0 cardContainer"
     >
       <div className="top ">
