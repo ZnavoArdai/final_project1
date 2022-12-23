@@ -92,7 +92,7 @@ export const SignIn = ({handelSingIn}) => {
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Button className="w-50 rounded-5" style={{background:"rgba(59,177,153,255)"}} onClick={handelSingIn}>Register</Button>
         </Form.Group>
-        {    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://windrosegdansk.pl/common/images/web5Busy.gif" alt="" />):Object.keys(error).length==0 && notAuthe?"you most be register":""
+        {    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://windrosegdansk.pl/common/images/web5Busy.gif" alt="" />):Object.keys(error).length==0 && notAuthe?"you most be register":"fill all the fields"
 }
       </Form>
     </div>
