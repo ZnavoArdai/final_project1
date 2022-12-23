@@ -22,7 +22,7 @@ const deleteBtn=(id)=>{
   
   setTimeout(() => {
     setAlert(false)
-  },3000 );
+  },1500 );
 }
 
 
@@ -33,19 +33,19 @@ const deleteBtn=(id)=>{
       <DeleteAlert />
       <img
             className="w-25"
-            src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831"
+            src="https://windrosegdansk.pl/common/images/web5Busy.gif"
             alt=""
           />
 
       </div>
 
-{posts && posts.map((post,index)=> {
+{posts? posts.map((post,index)=> {
 return(
   <div className='col-12 d-flex justify-content-center '>
 <PostsCard post={post} key={index} deleteBtn={deleteBtn} />
   </div>
 )}
-)}
+):<img className='w-25' src='https://windrosegdansk.pl/common/images/web5Busy.gif'/>}
     </div>
   )
 }

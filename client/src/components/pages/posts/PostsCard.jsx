@@ -31,7 +31,7 @@ function PostsCard({post,deleteBtn}) {
 
 
   return (
-    <Card style={{width:"55rem"}}
+    <Card style={{width:"55rem" ,background:"rgba(59,177,153,255)"}}
       
       className="mt-4 mb-4 p-2 border-0 cardContainer"
     >
@@ -46,7 +46,7 @@ function PostsCard({post,deleteBtn}) {
         </div>
         <div>
           <div className="mx-3">
-            <span className="d-block"> {post.category}</span>
+            <span className="d-block text-light"> {post.category}</span>
             <span className="text-muted">{new Date (`${post.date}`).toLocaleDateString()}</span>
           </div>
         </div>
@@ -59,9 +59,9 @@ function PostsCard({post,deleteBtn}) {
         style={{height:300}}
       />
       <Card.Body className="p-2">
-        <Card.Text className="fs-5">{post.title}</Card.Text>
+        <Card.Text className="fs-5 text-light">{post.title}</Card.Text>
         <hr />
-        <Card.Text>
+        <Card.Text className="text-light">
         {post.description}
         <hr />
 <span>author:{""}{post.user.name}</span>
@@ -71,7 +71,7 @@ function PostsCard({post,deleteBtn}) {
         {isLoggedUser() ? (
            <Card.Text className="float-end">
 
-            <a className="mx-2 btn text-warning " href={`/posts/api/${post._id}`}  >
+            <a className="mx-2 btn text-warning " href={`/POSTS/${post._id}`}  >
             <MdOutlineModeEditOutline size={25}    />
           </a>
           

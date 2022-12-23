@@ -9,7 +9,7 @@ import Home from '../components/pages/Home/Home'
 import NewPost from '../components/pages/NewPost/NewPost'
 import Posts from '../components/pages/posts/Posts'
 import Profile from '../components/pages/Profile/Profile'
-import UpdatePost from '../updatePost/UpdatePost'
+import UpdatePost from '../components/pages/updatePost/UpdatePost'
 
 const Router = () => {
 const isLoggedIn=useSelector((state)=>state.isLoggedIn)
@@ -27,7 +27,7 @@ const isLoggedIn=useSelector((state)=>state.isLoggedIn)
       
  <Route path='/PROFILE' element={<Profile/>} />
  <Route path='/NEW POST' element={<NewPost/>} />
- <Route path='/posts/api/:id' element={<UpdatePost/>} />
+ <Route path='/POSTS/:id' element={<UpdatePost/>} />
  </>
         )}
        

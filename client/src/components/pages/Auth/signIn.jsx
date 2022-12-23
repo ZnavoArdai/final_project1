@@ -1,3 +1,4 @@
+import e from "cors";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
@@ -9,9 +10,13 @@ import {loggedIn} from "../../../store/userReducer"
 
 export const SignIn = ({handelSingIn}) => {
     const navigate=useNavigate()
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [notAuthe, setNotAuthe] = useState(false);
+
+
     const [signInForm, setSingInForm] = useState({
-        email: "",
-        password: "",
+        email: "example@gmail.com",
+        password: "******",
   
       });
       const [error, setError] = useState({})
@@ -27,15 +32,22 @@ export const SignIn = ({handelSingIn}) => {
     
       const submitForm = (e) => {
         e.preventDefault();
+      
         setError( validateForm(signInForm))
 
         if(Object.keys(error).length==0){
-            loging(signInForm).then((data)=>localStorage.setItem("userId",data.id)).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/"))
+            loging(signInForm).then((data)=>localStorage.setItem("userId",data.id)).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/")).then((res)=>res?setIsSubmit(true):setIsSubmit(false)
+            ).catch((error)=>setNotAuthe(true)
+            )
         }
+
+        
 
         
       };
 
+
+     
   
     
       const validateForm = (value) => {
@@ -63,23 +75,25 @@ export const SignIn = ({handelSingIn}) => {
         <Form.Text className="fs-6"><h3>Sing In</h3></Form.Text>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" name="email" onChange={(e)=>handeFormChange(e)} />
+          <Form.Control type="email" placeholder="name@example.com" name="email" onChange={(e)=>handeFormChange(e)}  />
         </Form.Group>
         <span className="text-danger">{error.email}</span>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>password</Form.Label>
-          <Form.Control type="text" placeholder="******" name="password" onChange={(e)=>handeFormChange(e)} />
+          <Form.Control type="text" placeholder="******" name="password" onChange={(e)=>handeFormChange(e)}  />
         </Form.Group>
         <span className="text-danger">{error.password}</span>
 
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-    <Button className="w-50 rounded-5" onClick={(e)=>submitForm(e)}>Log In</Button>
+    <Button className="w-50 rounded-5" style={{background:"rgba(59,177,153,255)"}} onClick={(e)=>submitForm(e)}>Log In</Button>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Button className="w-50 rounded-5" onClick={handelSingIn}>Register</Button>
+        <Button className="w-50 rounded-5" style={{background:"rgba(59,177,153,255)"}} onClick={handelSingIn}>Register</Button>
         </Form.Group>
+        {    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://windrosegdansk.pl/common/images/web5Busy.gif" alt="" />):Object.keys(error).length==0 && notAuthe?"you most be register":""
+}
       </Form>
     </div>
   );

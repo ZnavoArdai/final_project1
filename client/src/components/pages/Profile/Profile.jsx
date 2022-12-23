@@ -33,26 +33,27 @@ const navigate=useNavigate()
   console.log(user);
   return (
     <div className="mt-5 text-center">
-      <div className="mt-5">------------------</div>
       {user && (
         <div className="d-flex justify-content-center">
-          <Card style={{ width: "18rem" }}>
+          <Card style={{width:"18rem" ,background:"rgba(59,177,153,255)"}}>
             <Card.Img variant="top" src={user.image} />
             <Card.Body>
-              <Card.Title>{user.name}</Card.Title>
-              <Card.Text>{user.email} </Card.Text>
-              <Button style={{ border: "none", width: 200 }} onClick={logout}>Log out</Button>
+              <Card.Title className="text-light">{user.name}</Card.Title>
+              <Card.Text className="text-light">{user.email} </Card.Text>
+              <Button className="btn-danger" style={{ border: "none", width: 200 }} onClick={logout}>Log out</Button>
             </Card.Body>
           </Card>
         </div>
       )}
 
-{user&&user.posts.length>0?<h1 className="mt-5">my posts</h1>:""} 
+{user&&user.posts.length>0?<h1 className="mt-5" style={{color:"rgba(59,177,153,255)"}}>my posts</h1>:""} 
 
-      <div className="d-flex justify-content-center">
-
-        {user && user.posts.map((post,index) =>
+      <div className=" ">
+<div className="row ">
+{user && user.posts.map((post,index) =>
         <ProfileCard post={post} index={index}/>)}
+</div>
+        
       </div>
     </div>
   );

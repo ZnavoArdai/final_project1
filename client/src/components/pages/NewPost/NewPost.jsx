@@ -51,20 +51,18 @@ function NewPost() {
   };
   useEffect(()=>{
     if (Object.keys(error).length === 0&& isSubmit) {
-        setTimeout(()=>{
-            navigate("/")
-        },3000)
-        console.log(error)
+        
+            navigate("/POSTS")
 
        }
 
   },[error])
   return (
-    <div className=" update">
+    <div className=" update mt-5 mb-5" >
       <span className="newpostTitile">
         {" "}
-        <h2>
-          Right new post <TfiWrite color="pink" size={80} />
+        <h2 style={{color:"rgba(59,177,153,255)"}}>
+          Right new post <TfiWrite color="rgba(59,177,153,255)" size={80} />
         </h2>{" "}
       </span>
       <Form>
@@ -129,14 +127,14 @@ function NewPost() {
         </Form.Group>
         <span className="text-danger">{error.subject}</span>
 
-        <Button className="rounded-5 w-100" onClick={(e) => submitForm(e)}>
+        <Button className="rounded-5 w-100" style={{background:"rgba(59,177,153,255)"}} onClick={(e) => submitForm(e)}>
           share post
         </Button>
         
     </Form>
     <div className="d-flex justify-content-center">
     {
-    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831" alt="" />):""
+    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://windrosegdansk.pl/common/images/web5Busy.gif" alt="" />):""
 }   
     </div>
  

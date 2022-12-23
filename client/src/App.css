@@ -22,6 +22,10 @@ body{
   font-size: 70px;
 
 }
+.main>h1{
+  color: rgba(59,177,153,255);
+
+}
 
 @media screen and (max-width:765px) {
   .homeHeader>h1{

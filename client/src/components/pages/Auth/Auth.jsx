@@ -13,7 +13,7 @@ const Auth = () => {
 
 
   return (
-    <div className="main">
+    <div className="main" style={{height:"120vh"}}>
       {isSingIn ? (
         <SignIn handelSingIn={handelSingIn} />
       ) : (

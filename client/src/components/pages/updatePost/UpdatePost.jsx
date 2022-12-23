@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { getPostDetails, updatePostDetails } from "../service/PostsService";
+import { getPostDetails, updatePostDetails } from "../../../service/PostsService";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
@@ -79,8 +79,8 @@ const UpdatePost = () => {
     <div className=" update">
       <span className="newpostTitile">
         {" "}
-        <h2>
-          Right new post <TfiWrite color="pink" size={80} />
+        <h2 className="" style={{color:"rgba(59,177,153,255)"}}>
+          Update your post <TfiWrite color="rgba(59,177,153,255)" size={80} />
         </h2>{" "}
       </span>
       <Form>
@@ -135,7 +135,7 @@ const UpdatePost = () => {
         </Form.Group>
         <span className="text-danger">{error.subject}</span>
 
-        <Button className="rounded-5 w-100" onClick={(e) => submitForm(e)}>
+        <Button className="rounded-5 w-100" style={{background:"rgba(59,177,153,255)"}} onClick={(e) => submitForm(e)}>
           update post
         </Button>
       </Form>
@@ -143,7 +143,7 @@ const UpdatePost = () => {
         {Object.keys(error).length == 0 && isSubmit ? (
           <img
             className="w-25"
-            src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831"
+            src="https://windrosegdansk.pl/common/images/web5Busy.gif"
             alt=""
           />
         ) : (

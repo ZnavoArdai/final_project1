@@ -124,17 +124,17 @@ export const SingUp = ({ handelSingIn }) => {
         <span className="text-danger">{error.secundPassWord}</span>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Button className="w-50 rounded-5" onClick={(e) => submitForm(e)}>
+          <Button className="w-50 rounded-5" style={{background:"rgba(59,177,153,255)"}} onClick={(e) => submitForm(e)}>
             Submit
           </Button>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Button className="w-50 rounded-5" onClick={handelSingIn}>
+          <Button className="w-50 rounded-5" style={{background:"rgba(59,177,153,255)"}} onClick={handelSingIn}>
             Sing In
           </Button>
         </Form.Group>
 {
-    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831" alt="" />):""
+    Object.keys(error).length==0 && isSubmit ?(<img className="w-25" src="https://windrosegdansk.pl/common/images/web5Busy.gif" alt="" />):""
 }
       </Form>
     </div>

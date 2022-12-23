@@ -31,7 +31,7 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
   return (
     <Navbar collapseOnSelect expand="lg"  className={scroll?"  fixed-top  navbar-bg":"navbarcontain "} >
       <Container>
-        <Navbar.Brand href="/"><img src="logo.png" className="w-50 rounded-3 d- d-none d-md-block" alt="" /></Navbar.Brand>
+        <Navbar.Brand href="/"><img src="logo.png" className="w-50 rounded-3  d-none d-md-block" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto ">
@@ -48,7 +48,7 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
             })
             :( defaultLinks.map((link)=>{
               return (
-                <Nav.Link as={Link} to={`/${link=="HOME" ? "":link}`}>
+                <Nav.Link className="text-light" as={Link} to={`/${link=="HOME" ? "":link}`}>
               {link}
             </Nav.Link> 
               )
