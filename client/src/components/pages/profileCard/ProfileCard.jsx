@@ -57,7 +57,7 @@ const navigate=useNavigate()
 
            <Card.Text className="float-end">
 
-            <a className="mx-2 btn text-warning " href={`/posts/api/${post._id}`}  >
+            <a className="mx-2 btn text-warning " href={`/posts/${post._id}`}  >
             <MdOutlineModeEditOutline size={25}    />
           </a>
           

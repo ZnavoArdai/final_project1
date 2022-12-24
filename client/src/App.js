@@ -8,6 +8,7 @@ import Router from './Router/Router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { loggedIn } from './store/userReducer';
+import Footer from './components/features/Footer/Footer';
 function App() {
 const dispatch=useDispatch()
   useEffect(()=>{
@@ -22,6 +23,7 @@ const dispatch=useDispatch()
 
 <Header/>
 <Router/>
+<Footer/>
 </BrowserRouter>
 
 </>

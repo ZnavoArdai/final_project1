@@ -1,13 +1,10 @@
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Posts.css";
 import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { get } from "mongoose";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loggedIn } from "../../../store/userReducer";
-import { useEffect } from "react";
+
 
 function PostsCard({post,deleteBtn}) {
   const dispatch=useDispatch()
@@ -71,9 +68,9 @@ function PostsCard({post,deleteBtn}) {
         {isLoggedUser() ? (
            <Card.Text className="float-end">
 
-            <a className="mx-2 btn text-warning " href={`/POSTS/${post._id}`}  >
+            <NavLink className="mx-2 btn text-warning " as={Link}  to={`/POSTS/${post._id}`}  >
             <MdOutlineModeEditOutline size={25}    />
-          </a>
+          </NavLink>
           
           <a className="mx-2 btn text-danger " onClick={()=>deleteBtn(post._id)} >
             <FiDelete  size={25}/>

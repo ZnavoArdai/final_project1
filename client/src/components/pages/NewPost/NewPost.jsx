@@ -58,11 +58,11 @@ function NewPost() {
 
   },[error])
   return (
-    <div className=" update mt-5 mb-5" >
+    <div className=" update mt-5 mb-5" style={{background:"rgba(71,63,88,255)"}} >
       <span className="newpostTitile">
         {" "}
         <h2 style={{color:"rgba(59,177,153,255)"}}>
-          Right new post <TfiWrite color="rgba(59,177,153,255)" size={80} />
+        write new post <TfiWrite color="rgba(59,177,153,255)" size={80} />
         </h2>{" "}
       </span>
       <Form>

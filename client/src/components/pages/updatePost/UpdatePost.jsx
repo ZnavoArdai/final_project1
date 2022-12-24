@@ -76,10 +76,10 @@ const UpdatePost = () => {
   }, [error]);
 
   return (
-    <div className=" update">
+    <div className=" update p-5" style={{background:"rgba(71,63,88,255)"}}>
       <span className="newpostTitile">
         {" "}
-        <h2 className="" style={{color:"rgba(59,177,153,255)"}}>
+        <h2 className="p-3" style={{color:"rgba(59,177,153,255)"}}>
           Update your post <TfiWrite color="rgba(59,177,153,255)" size={80} />
         </h2>{" "}
       </span>
