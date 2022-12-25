@@ -94,9 +94,20 @@ const getUserById = async (req, res) => {
 
   return res.status(200).json({user});
 };
+const client = require('twilio')(process.env.AC_SSID, process.env.SMS_AUTH);
+
+const sendSmsMessage=()=>{
+  client.messages.create({
+    body: 'your account is connected to new tech',
+    to: '+9720542379824',
+    from: '+12058581615'
+ }).then(message => console.log(message))
+   .catch(error => console.log(error))
+}
 module.exports = {
   register,
   login,
   getAllUsers,
   getUserById,
+  sendSmsMessage
 };

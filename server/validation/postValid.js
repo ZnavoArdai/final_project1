@@ -9,6 +9,8 @@ const postValidation = (data) => {
     date: Joi.string().required(),
     image: Joi.string().required(),
     user:Joi.string().required(),
+    comments:Joi.string().required(),
+
 
   });
 

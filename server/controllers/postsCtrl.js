@@ -1,5 +1,6 @@
 const Posts = require("../models/postsModel");
 const User = require("../models/userModel");
+const Comments =require("../models/commentsModel")
 
 const mongoose=require("mongoose")
 
@@ -25,7 +26,7 @@ const getAllPosts = async (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const { title, description, category, date, image, user } = req.body;
+  const { title, description, category, date, image, user ,comments} = req.body;
 
   const {error}=postValidation(req.body)
   if (error) {
@@ -53,6 +54,7 @@ const createPost = async (req, res) => {
       category,
       date: new Date(`${date}`),
       user,
+      comments,
     });
 
     const session = await mongoose.startSession();
@@ -129,6 +131,45 @@ const updatePost = async (req, res) => {
 
   return res.status(200).json({ message: "Deleted Successfully" });
 };
+
+const creatComment= async (req,res)=>{
+
+
+  let isPostExist;
+  try {
+    isPostExist = await Posts.findById(req.params.id);
+  } catch (err) {
+    return console.log(err);
+  }
+
+  if (!isPostExist) {
+    return res.status(404).json({ message: "post not found" });
+  }
+
+  let comment;
+
+  try {
+    comment = new Comments({
+      commentBody:req.body.commentBody,
+      postsComments,
+      
+    });
+
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    isPostExist.postsComments.push(comment);
+    await existingUser.save({ session });
+    post = await post.save({ session });
+    session.commitTransaction();
+  } catch (err) {
+    return console.log(err);
+  }
+
+  if (!post) {
+    return res.status(500).json({ message: "Unexpected Error Occurred" });
+  }
+  return res.status(201).json({ post });
+}
 
 module.exports = {
   getAllPosts,

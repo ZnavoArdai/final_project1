@@ -24,7 +24,7 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
 
     
-  <div className='homeHeader '  style={{height:550}} >
+  <div className='homeHeader mt-3 mt-lg-0'  style={{height:550}} >
   
   <h1 className='  '>New Tech Blog</h1>
 

@@ -7,6 +7,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getSms } from "../../../service/userServices";
 
 function NavBarapp() {
 const defaultLinks = ["HOME","POSTS", "SignIn/SignUp"];
@@ -28,6 +30,12 @@ window.addEventListener("scroll",isScrolled)
 
 const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
+useEffect(()=>{
+
+  if(isLoggedIn){
+    getSms()
+  }
+},[isLoggedIn])
   return (
     <Navbar collapseOnSelect expand="lg"  className={scroll?"  fixed-top  navbar-bg":"navbarcontain "} >
       <Container>

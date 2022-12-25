@@ -36,3 +36,9 @@ export const getUserById= async (id)=>{
   const newData = await res.json();
   return newData;
 } 
+
+export const getSms= async ()=>{
+  const res= await fetch(`http://localhost:6060/user/api/send/sms`)
+
+  return res;
+} 

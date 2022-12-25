@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { loging } from "../../../service/userServices";
+import { getSms, loging } from "../../../service/userServices";
 
 import {loggedIn} from "../../../store/userReducer"
 
@@ -39,6 +39,7 @@ export const SignIn = ({handelSingIn}) => {
             loging(signInForm).then((data)=>localStorage.setItem("userId",data.id)).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/")).then((res)=>res?setIsSubmit(true):setIsSubmit(false)
             ).catch((error)=>setNotAuthe(true)
             )
+
         }
 
         

@@ -27,7 +27,7 @@ const navigate=useNavigate()
 
  
     <Card
-      style={{ width: "45rem",background:"rgba(59,177,153,255)" }}
+      style={{ width: "40rem",background:"rgba(59,177,153,255)" }}
       className="mt-4 mb-4 p-2 border-0 cardContainer "
     >
       <div className="top  ">
