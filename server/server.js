@@ -15,9 +15,11 @@ app.use(express.json({ extended: true }));
 const userRouter=require("./routes/userRouter")
 const postsRouter=require("./routes/PostRouter")
 
+const commentsRouter=require("./routes/commentsRouter")
 
 app.use("/user/api",userRouter)
 app.use("/posts/api",postsRouter)
+app.use("/comments/api",commentsRouter)
 
 
 app.get("/",(req,res)=>{

@@ -30,11 +30,10 @@ const posts = new Schema({
     required: true,
   },
  
-  comments: {
+  comments:[ {
     type: mongoose.Types.ObjectId,
     ref: "comments",
-    required: true,
-  },
+  }],
 });
 
 module.exports = mongoose.model("posts", posts);

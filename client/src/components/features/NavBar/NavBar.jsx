@@ -30,12 +30,12 @@ window.addEventListener("scroll",isScrolled)
 
 const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
-useEffect(()=>{
-
-  if(isLoggedIn){
-    getSms()
-  }
-},[isLoggedIn])
+// useEffect(()=>{
+//   if(isLoggedIn){
+//     getSms()
+//   }
+ 
+// },[])
   return (
     <Navbar collapseOnSelect expand="lg"  className={scroll?"  fixed-top  navbar-bg":"navbarcontain "} >
       <Container>

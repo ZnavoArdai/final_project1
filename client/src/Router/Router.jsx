@@ -10,6 +10,7 @@ import NewPost from '../components/pages/NewPost/NewPost'
 import Posts from '../components/pages/posts/Posts'
 import Profile from '../components/pages/Profile/Profile'
 import UpdatePost from '../components/pages/updatePost/UpdatePost'
+import PostComments from '../components/PostComments/PostComments'
 
 const Router = () => {
 const isLoggedIn=useSelector((state)=>state.isLoggedIn)
@@ -28,6 +29,8 @@ const isLoggedIn=useSelector((state)=>state.isLoggedIn)
  <Route path='/PROFILE' element={<Profile/>} />
  <Route path='/NEW POST' element={<NewPost/>} />
  <Route path='/POSTS/:id' element={<UpdatePost/>} />
+ <Route path='/POSTS/COMMENTS/:id' element={<PostComments/>} />
+
  </>
         )}
        

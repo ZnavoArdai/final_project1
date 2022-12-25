@@ -28,7 +28,7 @@ const deleteBtn=(id)=>{
 
   
   return (
-    <div className='main d-flex justify-content-center container-fluid row mt-5' id='postsShowCase'>
+    <div className='main d-flex justify-content-center container-fluid row mt-5' id='postsShowCase' style={{minHeight:"100vh"}}>
       <div className={alert?'fixed-top mt-5 w-25 d-flex justify-content-center align-items-center h-100':"d-none"} >
       <DeleteAlert />
       <img
@@ -45,7 +45,7 @@ return(
 <PostsCard post={post} key={index} deleteBtn={deleteBtn} />
   </div>
 )}
-):<img className='w-25' src='https://windrosegdansk.pl/common/images/web5Busy.gif'/>}
+):<img style={{width:"100px" ,height:"100px"}} src='https://windrosegdansk.pl/common/images/web5Busy.gif'/>}
     </div>
   )
 }

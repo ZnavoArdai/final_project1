@@ -13,7 +13,7 @@ const { postValidation, updateValidation } = require("../validation/postValid");
 const getAllPosts = async (req, res) => {
   let post;
   try {
-    post = await Posts.find().populate("user");
+    post = await Posts.find().populate("user").populate("comments");
   } catch (err) {
     return console.log(err);
   }
@@ -132,49 +132,11 @@ const updatePost = async (req, res) => {
   return res.status(200).json({ message: "Deleted Successfully" });
 };
 
-const creatComment= async (req,res)=>{
-
-
-  let isPostExist;
-  try {
-    isPostExist = await Posts.findById(req.params.id);
-  } catch (err) {
-    return console.log(err);
-  }
-
-  if (!isPostExist) {
-    return res.status(404).json({ message: "post not found" });
-  }
-
-  let comment;
-
-  try {
-    comment = new Comments({
-      commentBody:req.body.commentBody,
-      postsComments,
-      
-    });
-
-    const session = await mongoose.startSession();
-    session.startTransaction();
-    isPostExist.postsComments.push(comment);
-    await existingUser.save({ session });
-    post = await post.save({ session });
-    session.commitTransaction();
-  } catch (err) {
-    return console.log(err);
-  }
-
-  if (!post) {
-    return res.status(500).json({ message: "Unexpected Error Occurred" });
-  }
-  return res.status(201).json({ post });
-}
 
 module.exports = {
   getAllPosts,
   createPost,
   getPostById,
   updatePost,
-  deletePost
+  deletePost,
 };

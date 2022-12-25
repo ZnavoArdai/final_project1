@@ -53,10 +53,10 @@ function PostsCard({post,deleteBtn}) {
         variant="top"
         className="img-fluid"
         src={post.image}
-        style={{height:300}}
+        style={{height:300}} 
       />
       <Card.Body className="p-2">
-        <Card.Text className="fs-5 text-light">{post.title}</Card.Text>
+        <Card.Text className="fs-5 text-light" as={Link} to={`/POSTS/COMMENTS/${post._id}`}>{post.title}</Card.Text>
         <hr />
         <Card.Text className="text-light">
         {post.description}

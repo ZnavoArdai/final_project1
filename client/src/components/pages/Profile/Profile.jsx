@@ -32,7 +32,7 @@ const navigate=useNavigate()
 
   console.log(user);
   return (
-    <div className="mt-5 text-center container">
+    <div className="mt-5 text-center container" style={{minHeight:"100vh"}}>
       {user && (
         <div className="d-flex justify-content-center">
           <Card style={{width:"18rem" ,background:"rgba(59,177,153,255)"}}>
