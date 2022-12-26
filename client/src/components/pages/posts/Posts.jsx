@@ -45,7 +45,7 @@ return(
 <PostsCard post={post} key={index} deleteBtn={deleteBtn} />
   
 )}
-)):(<img style={{width:"100px" ,height:"100px"}} src='https://windrosegdansk.pl/common/images/web5Busy.gif'/>)}
+).reverse()):(<img style={{width:"100px" ,height:"100px"}} src='https://windrosegdansk.pl/common/images/web5Busy.gif'/>)}
 </div>
     </div>
   )
