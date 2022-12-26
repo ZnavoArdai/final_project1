@@ -60,7 +60,7 @@ const login = async (req, res) => {
 
   return res
     .status(200)
-    .json({ id: existUser.id, massage: "login successfully" });
+    .json({ id: existUser.id,name: existUser.name, massage: "login successfully" });
 };
 const getAllUsers = async (req, res) => {
   let allUsaers;

@@ -41,7 +41,8 @@ const creatComment= async (req,res)=>{
       comment = new Comments({
         commentBody:req.body.commentBody,
         postsComments:req.params.id,
-        user:req.body.user
+        user:req.body.user,
+        name:req.body.name
       });
   
       const session = await mongoose.startSession();

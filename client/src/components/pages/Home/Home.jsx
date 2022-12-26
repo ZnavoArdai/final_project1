@@ -37,7 +37,7 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
   <div>
 
   
-<div className=" mt-5 d-flex justify-content-evenly row">
+<div className=" mt-5 d-flex justify-content-evenly row container-fluid">
 <Card className='col-md-4 mt-3 border-0' style={{ width: "20rem"}}>
   <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-1].image}/>
   <Card.Body>

@@ -7,7 +7,8 @@ axios.defaults.baseURL = "http://localhost:6060/";
 export const createComment = async(someData,id) => {
   const res = await axios.post(`comments/api/${id}`, {
 commentBody:someData,
-user:localStorage.getItem("userId")
+user:localStorage.getItem("userId"),
+name:localStorage.getItem("userName")
   });
 
   const data=await res.data;

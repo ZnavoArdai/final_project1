@@ -6,6 +6,9 @@ const comments = new Schema({
   commentBody: {
     type: String,
   },
+  name: {
+    type: String,
+  },
   postsComments: {
     type: mongoose.Types.ObjectId,
     ref: "posts",

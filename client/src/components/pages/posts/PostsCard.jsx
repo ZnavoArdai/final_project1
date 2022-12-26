@@ -32,7 +32,7 @@ function PostsCard({post,deleteBtn}) {
   return (
     <Card style={{width:"55rem" ,background:"rgba(59,177,153,255)"}}
       
-      className="mt-4 mb-4 p-2 border-0 cardContainer"
+      className="mt-4 mb-4 p-2 border-0 cardContainer col-12"
     >
       <div className="top ">
         <div className="avatar p-2">

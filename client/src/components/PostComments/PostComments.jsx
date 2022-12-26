@@ -12,8 +12,7 @@ const PostComments = () => {
   const [post, setPost] = useState();
   const [postComments, setPostComments] = useState([]);
   const [users,setUser]=useState([])
-const userArray=[]
-console.log(userArray)
+console.log(users)
 
   const [newComment,setNewComment]=useState()
 
@@ -38,10 +37,7 @@ console.log(userArray)
 
   }
 
-const getUser=(iduser)=>{
-    getUserById(iduser)
 
-}
   console.log(id);
 
   useEffect(() => {
@@ -113,11 +109,10 @@ const getUser=(iduser)=>{
 
     <div className="comentsContainer mt-3" id="">
 {postComments&&postComments.map((coment,index)=>{
-    getUser(coment.user)
     return (
         
         <div className="comments">
-         <span>{userArray[index]}</span>  {coment.commentBody}
+  <span className="CommentName">{coment.name}</span>{coment.commentBody} 
           
             {isLoggedUser(index) ? (
           

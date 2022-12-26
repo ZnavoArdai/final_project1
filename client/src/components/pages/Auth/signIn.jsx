@@ -36,7 +36,14 @@ export const SignIn = ({handelSingIn}) => {
         setError( validateForm(signInForm))
 
         if(Object.keys(error).length==0){
-            loging(signInForm).then((data)=>localStorage.setItem("userId",data.id)).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/")).then((res)=>res?setIsSubmit(true):setIsSubmit(false)
+
+
+            loging(signInForm).then((data)=>{
+              localStorage.setItem("userId",data.id)
+              localStorage.setItem("userName",data.name)
+
+          
+          }).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/")).then((res)=>res?setIsSubmit(true):setIsSubmit(false)
             ).catch((error)=>setNotAuthe(true)
             )
 

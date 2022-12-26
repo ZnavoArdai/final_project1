@@ -2,8 +2,10 @@
 import Card from "react-bootstrap/Card";
 import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { deletePost } from "../../../service/PostsService";
+import { FaRegComments } from "react-icons/fa";
+
 
 
 function ProfileCard({post}) {
@@ -53,8 +55,10 @@ const navigate=useNavigate()
         {post.description}
         </Card.Text>
 
-       
-
+        <NavLink className="mx-2 btn text-primary float-start " as={Link} to={`/POSTS/COMMENTS/${post._id}`}  >
+            <FaRegComments  size={35}/>
+          </NavLink>
+        
            <Card.Text className="float-end">
 
             <a className="mx-2 btn text-warning " href={`/posts/${post._id}`}  >
