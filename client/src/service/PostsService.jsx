@@ -21,7 +21,8 @@ export const newPost = async(someData) => {
     title: someData.title,
     image: someData.image,
     description:someData.subject,
-    user:localStorage.getItem("userId")
+    user:localStorage.getItem("userId"),
+    
   });
 
   const data=await res.data;

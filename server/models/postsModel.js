@@ -29,6 +29,7 @@ const posts = new Schema({
     ref: "users",
     required: true,
   },
+  
  
   comments:[ {
     type: mongoose.Types.ObjectId,

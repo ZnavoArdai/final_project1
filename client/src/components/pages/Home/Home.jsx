@@ -38,11 +38,11 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
   
 <div className=" mt-5 d-flex justify-content-evenly row container-fluid">
-<Card className='col-md-4 mt-3 border-0' style={{ width: "20rem"}}>
+<Card className='col-md-4 mt-3 ' style={{ width: "20rem"}}>
   <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-1].image}/>
   <Card.Body>
     <Card.Title>{post&&post[post.length-1].title}</Card.Title>
-  </Card.Body>    <Card.Text> author: {post&&post[post.length-2].user.name} </Card.Text>
+  </Card.Body>    <Card.Text> author: {post&&post[post.length-1].user.name} </Card.Text>
 
 </Card>
 <Card className='col-md-4 mt-3' style={{ width: "20rem"}}>
@@ -56,7 +56,7 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
   <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-3].image}/>
   <Card.Body>
     <Card.Title>{post&&post[post.length-3].title}</Card.Title>
-  </Card.Body>    <Card.Text>author: {post&&post[post.length-2].user.name} </Card.Text>
+  </Card.Body>    <Card.Text>author: {post&&post[post.length-3].user.name} </Card.Text>
 
 </Card>
 
