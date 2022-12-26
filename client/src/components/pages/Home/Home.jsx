@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card, Carousel } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { getAllPosts } from '../../../service/PostsService'
 import { FaPeopleArrows } from 'react-icons/fa';
 import { GrTechnology} from 'react-icons/gr';
 import { FaGlobeAfrica } from 'react-icons/fa';
+import CarouselApp from '../../features/Carusel/Carusel'
 
 const Home = () => {
 const isLoggedIn=useSelector(state=>state.isLoggedIn)
@@ -20,17 +21,16 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
   console.log(post)
   return (
-<div className='main  text-center'>
 
-
-    
-  <div className='homeHeader mt-3 mt-lg-0'  style={{height:550}} >
   
-  <h1 className='  '>New Tech Blog</h1>
 
+<div className='main  text-center' >
 
-
-  </div>
+<div >
+  
+<CarouselApp />
+</div>
+    
   <h1 className='mt-5'>Latest posts</h1>
 
 
@@ -38,22 +38,22 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
   {post&&(
 <div className=" mt-5 d-flex justify-content-evenly row container-fluid">
-<Card className='col-md-4 mt-3 ' style={{ width: "20rem"}}>
-  <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-1].image}/>
+<Card className='col-md-4 mt-3 imcontain ' style={{ width: "20rem"}}>
+  <Card.Img className='imgHome' variant="top"  src={post&&post[post.length-1].image}/>
   <Card.Body>
     <Card.Title>{post&&post[post.length-1].title}</Card.Title>
   </Card.Body>    <Card.Text> author: {post&&post[post.length-1].user.name} </Card.Text>
 
 </Card>
-<Card className='col-md-4 mt-3' style={{ width: "20rem"}}>
-  <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-2].image}/>
+<Card className='col-md-4 mt-3 imcontain' style={{ width: "20rem"}}>
+  <Card.Img className='imgHome' variant="top"  src={post&&post[post.length-2].image}/>
   <Card.Body>
     <Card.Title>{post&&post[post.length-2].title}</Card.Title>
   </Card.Body>    <Card.Text>author: {post&&post[post.length-2].user.name} </Card.Text>
 
 </Card>
-<Card className='col-md-4 mt-3' style={{ width: "20rem" }}>
-  <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-3].image}/>
+<Card className='col-md-4 mt-3 imcontain' style={{ width: "20rem" }}>
+  <Card.Img className='imgHome ' variant="top"  src={post&&post[post.length-3].image}/>
   <Card.Body>
     <Card.Title>{post&&post[post.length-3].title}</Card.Title>
   </Card.Body>    <Card.Text>author: {post&&post[post.length-3].user.name} </Card.Text>

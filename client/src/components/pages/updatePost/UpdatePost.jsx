@@ -70,7 +70,7 @@ const UpdatePost = () => {
     if (Object.keys(error).length === 0 && isSubmit) {
       setTimeout(() => {
         navigate("/posts");
-      }, 3000);
+      }, 2000);
       console.log(error);
     }
   }, [error]);

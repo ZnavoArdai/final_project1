@@ -42,6 +42,7 @@ export const SignIn = ({handelSingIn}) => {
               localStorage.setItem("userId",data.id)
               localStorage.setItem("userName",data.name)
               localStorage.setItem("userImage",data.image)
+              getSms()
 
 
           

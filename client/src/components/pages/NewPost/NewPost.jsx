@@ -52,8 +52,9 @@ function NewPost() {
   useEffect(()=>{
     if (Object.keys(error).length === 0&& isSubmit) {
         
-            navigate("/POSTS")
-
+      setTimeout(() => {
+        navigate("/posts");
+      }, 2000);
        }
 
   },[error])

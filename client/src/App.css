@@ -67,3 +67,33 @@ body{
   border-radius: 5px;
   
 }
+
+.imgHome{
+  opacity: 80%;
+  width:21rem;
+
+}
+.imgHome:hover{
+
+  animation-name: img;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+.imcontain{
+  overflow: hidden;
+}
+
+@keyframes img {
+  
+  from {
+    opacity:80%;
+    width:21rem;
+
+  }
+  to{
+    opacity:100%;
+    width: 22rem;
+
+
+  }
+}
