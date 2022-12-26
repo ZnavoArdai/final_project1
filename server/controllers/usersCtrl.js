@@ -27,6 +27,7 @@ const register = async (req, res) => {
     password: hashedPassword,
     image:req.body.image,
     posts: [],
+    comments:[]
   });
   try {
     const saveUser = await newUser.save();

@@ -4,6 +4,8 @@ import { FiDelete } from "react-icons/fi";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { FaRegComments} from "react-icons/fa";
+
 
 
 function PostsCard({post,deleteBtn}) {
@@ -56,14 +58,16 @@ function PostsCard({post,deleteBtn}) {
         style={{height:300}} 
       />
       <Card.Body className="p-2">
-        <Card.Text className="fs-5 text-light" as={Link} to={`/POSTS/COMMENTS/${post._id}`}>{post.title}</Card.Text>
+        <Card.Text className="fs-5 text-light">{post.title}</Card.Text>
         <hr />
         <Card.Text className="text-light">
         {post.description}
         <hr />
 <span>author:{""}{post.user.name}</span>
         </Card.Text>
-
+        <NavLink className="mx-2 btn text-primary " as={Link} to={`/POSTS/COMMENTS/${post._id}`}  >
+            <FaRegComments  size={35}/>
+          </NavLink>
        
         {isLoggedUser() ? (
            <Card.Text className="float-end">

@@ -11,6 +11,11 @@ const comments = new Schema({
     ref: "posts",
     required: true,
   },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "users",
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("comments", comments);

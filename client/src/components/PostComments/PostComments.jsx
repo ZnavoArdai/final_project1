@@ -5,11 +5,15 @@ import { getPostDetails } from "../../service/PostsService";
 import { Card } from "react-bootstrap";
 import { createComment, deleteComment, getPostComments } from "../../service/commentsService";
 import { AiOutlineDelete } from "react-icons/ai";
+import { getUserById } from "../../service/userServices";
 
 
 const PostComments = () => {
   const [post, setPost] = useState();
   const [postComments, setPostComments] = useState([]);
+  const [users,setUser]=useState([])
+const userArray=[]
+console.log(userArray)
 
   const [newComment,setNewComment]=useState()
 
@@ -30,18 +34,24 @@ const PostComments = () => {
 
   const sendComment=()=>{
     createComment(newComment,id).then((res)=>console.log(res))
+    setNewComment("")
+
   }
 
+const getUser=(iduser)=>{
+    getUserById(iduser)
 
+}
   console.log(id);
 
   useEffect(() => {
     getPostDetails(id).then((res) => setPost(res.post));
     getPostComments(id).then((res)=>setPostComments(res.post.comments))
-  }, [postComments]);
+  },[postComments]);
 
-  const isLoggedUser=()=>{
-    if(localStorage.getItem("userId")==post.user){
+  console.log(postComments);
+  const isLoggedUser=(index)=>{
+    if(localStorage.getItem("userId")==post.user||localStorage.getItem("userId")==postComments[index].user){
 
       return true
     }
@@ -51,7 +61,7 @@ const PostComments = () => {
   }
 
   return (
-<>
+<div className="" style={{minHight:"100vh"}}>
     {post&&(
     <div className="d-flex row justify-content-center container-fluid"  >
 
@@ -93,7 +103,7 @@ const PostComments = () => {
     
       </Card.Body>
     </Card>
-    <Card className="mt-4 mb-4 p-2 border-0 cardContainer col-lg-6" style={{ background:"rgba(59,177,153,255)"}}>
+    <Card className="mt-4 mb-4 p-2 border-0 cardContainer col-lg-5 mx-1 " style={{ background:"rgba(59,177,153,255)"}}>
 
 <div className="">
     <div className="mt-5 d-flex justify-content-center  ">
@@ -102,13 +112,14 @@ const PostComments = () => {
     </div>
 
     <div className="comentsContainer mt-3" id="">
-{postComments&&postComments.map((coment)=>{
+{postComments&&postComments.map((coment,index)=>{
+    getUser(coment.user)
     return (
         
         <div className="comments">
-            {coment.commentBody}
+         <span>{userArray[index]}</span>  {coment.commentBody}
           
-            {isLoggedUser() ? (
+            {isLoggedUser(index) ? (
           
           
           <a className="mb-5 btn text-danger float-end  " >
@@ -129,7 +140,7 @@ const PostComments = () => {
     </Card>
     </div>
     )}
-    </>
+    </div>
     
     
   );

@@ -2,7 +2,8 @@ const Comments =require("../models/commentsModel")
 const Posts =require("../models/postsModel")
 
 
-const mongoose=require("mongoose")
+const mongoose=require("mongoose");
+const userModel = require("../models/userModel");
 
 const mongo=mongoose.mongo;
 const session=mongoose.startSession;
@@ -39,7 +40,8 @@ const creatComment= async (req,res)=>{
     try {
       comment = new Comments({
         commentBody:req.body.commentBody,
-        postsComments:req.params.id
+        postsComments:req.params.id,
+        user:req.body.user
       });
   
       const session = await mongoose.startSession();
@@ -84,7 +86,8 @@ const creatComment= async (req,res)=>{
     let post;
   
     try {
-      post = await Posts.findById(id).populate("comments");
+      post = await Posts.findById(id).populate("comments")
+  
     } catch (err) {
       return console.log(err);
     }
