@@ -9,6 +9,9 @@ const comments = new Schema({
   name: {
     type: String,
   },
+  image: {
+    type: String,
+  },
   postsComments: {
     type: mongoose.Types.ObjectId,
     ref: "posts",

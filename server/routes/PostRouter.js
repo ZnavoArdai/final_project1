@@ -9,10 +9,5 @@ router.post("/",createPost)
 router.get("/:id",getPostById)
 router.put("/:id",updatePost)
 router.delete("/:id",deletePost)
-
-
-
-
-
 module.exports=router;
 

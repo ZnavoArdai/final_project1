@@ -3,8 +3,9 @@ env.config();
 const cors=require("cors");
 const express=require("express");
 const db=require("./db");
+const mongoose=require("mongoose")
 
-
+mongoose.set("strictQuery", false);
 
 const app=express();
 const port=6060;

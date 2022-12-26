@@ -7,6 +7,7 @@ import SignIn from '../components/pages/Auth/signIn'
 import SingUp from '../components/pages/Auth/SingUp'
 import Home from '../components/pages/Home/Home'
 import NewPost from '../components/pages/NewPost/NewPost'
+import NotFund from '../components/pages/NotFound/NotFund'
 import Posts from '../components/pages/posts/Posts'
 import Profile from '../components/pages/Profile/Profile'
 import UpdatePost from '../components/pages/updatePost/UpdatePost'
@@ -19,6 +20,8 @@ const isLoggedIn=useSelector((state)=>state.isLoggedIn)
 
     <Routes>
         <Route path='/' element={<Home/>} />
+        <Route path='*' element={<NotFund/>} />
+
         <Route path='/POSTS' element={<Posts/>} />
         <Route path='/signIn/signUp' element={<Auth/>} />
         

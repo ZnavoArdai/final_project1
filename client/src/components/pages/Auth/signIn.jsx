@@ -41,6 +41,8 @@ export const SignIn = ({handelSingIn}) => {
             loging(signInForm).then((data)=>{
               localStorage.setItem("userId",data.id)
               localStorage.setItem("userName",data.name)
+              localStorage.setItem("userImage",data.image)
+
 
           
           }).then(()=>{dispatch(loggedIn())}).then(()=>navigate("/")).then((res)=>res?setIsSubmit(true):setIsSubmit(false)

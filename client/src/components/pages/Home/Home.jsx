@@ -36,7 +36,7 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
 
   <div>
 
-  
+  {post&&(
 <div className=" mt-5 d-flex justify-content-evenly row container-fluid">
 <Card className='col-md-4 mt-3 ' style={{ width: "20rem"}}>
   <Card.Img variant="top" style={{maxHeight: "10rem" }} src={post&&post[post.length-1].image}/>
@@ -61,17 +61,19 @@ const isLoggedIn=useSelector(state=>state.isLoggedIn)
 </Card>
 
 </div>
+)}
 <div className='mt-5 d-flex justify-content-center mb-5'>
 
 {!isLoggedIn&&(<>
-  <Button style={{ border: "none", width: 200 ,marginRight:55,background:"rgba(59,177,153,255)"}} >Sing In</Button>
-<Button style={{ border: "none", width: 200 ,background:"rgba(59,177,153,255)"}} >Posts</Button>
+  <Button style={{ border: "none", width: 200 ,marginRight:55,background:"rgba(59,177,153,255)"}} href="/signIn/signUp" >Sing In</Button>
+<Button style={{ border: "none", width: 200 ,background:"rgba(59,177,153,255)"}} href="/POSTS" >Posts</Button>
 </>
 
 )}
 
 
 </div>
+
   </div>
   <section className="page-section mt-5 mb-5" id="services">
     <div className="container">

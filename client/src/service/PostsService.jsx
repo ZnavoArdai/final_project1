@@ -42,6 +42,7 @@ export const getPostDetails = async (some) => {
         description: some.subject,
         image: some.image,
         category: some.category,
+        
     }).catch((err) => console.log(err));
    
     const resData = await res.data;

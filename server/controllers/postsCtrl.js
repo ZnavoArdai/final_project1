@@ -55,6 +55,7 @@ const createPost = async (req, res) => {
       date: new Date(`${date}`),
       user,
       comments,
+  
     });
 
     const session = await mongoose.startSession();
@@ -101,6 +102,8 @@ const updatePost = async (req, res) => {
       description: req.body.description,
       image: req.body.image,
       category: req.body.category,
+      
+    
     });
   } catch (error) {
     console.log(error);
@@ -133,10 +136,13 @@ const updatePost = async (req, res) => {
 };
 
 
+
+
 module.exports = {
   getAllPosts,
   createPost,
   getPostById,
   updatePost,
   deletePost,
+  
 };

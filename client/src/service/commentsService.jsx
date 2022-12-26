@@ -8,7 +8,8 @@ export const createComment = async(someData,id) => {
   const res = await axios.post(`comments/api/${id}`, {
 commentBody:someData,
 user:localStorage.getItem("userId"),
-name:localStorage.getItem("userName")
+name:localStorage.getItem("userName"),
+image:localStorage.getItem("userImage")
   });
 
   const data=await res.data;

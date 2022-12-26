@@ -11,41 +11,40 @@ import { getUserById } from "../../service/userServices";
 const PostComments = () => {
   const [post, setPost] = useState();
   const [postComments, setPostComments] = useState([]);
-  const [users,setUser]=useState([])
-console.log(users)
+
 
   const [newComment,setNewComment]=useState()
 
   const handelChange=(e)=>{
 
     setNewComment(e.target.value)
-    console.log(newComment)
 
   }
 
   const deleteCommentBtn=(some)=>{
     deleteComment(some).catch(error=>console.log(error))
   }
-  console.log(postComments);
   
   let id = useParams().id;
 
 
   const sendComment=()=>{
-    createComment(newComment,id).then((res)=>console.log(res))
+    createComment(newComment,id)
     setNewComment("")
 
   }
 
+  // console.log(post.user)
 
-  console.log(id);
+  // console.log(id);
 
+
+console.log()
   useEffect(() => {
     getPostDetails(id).then((res) => setPost(res.post));
     getPostComments(id).then((res)=>setPostComments(res.post.comments))
   },[postComments]);
 
-  console.log(postComments);
   const isLoggedUser=(index)=>{
     if(localStorage.getItem("userId")==post.user||localStorage.getItem("userId")==postComments[index].user){
 
@@ -70,7 +69,7 @@ console.log(users)
           <img
             className=""
             width={50}
-            src={post.user.image?post.user.image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-fMXEWyzl7MNd3Q15JOeyzHxasfVIHK6K_A&usqp=CAU"}
+            src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-fMXEWyzl7MNd3Q15JOeyzHxasfVIHK6K_A&usqp=CAU"}
           />
           
         </div>
@@ -111,10 +110,10 @@ console.log(users)
 {postComments&&postComments.map((coment,index)=>{
     return (
         
-        <div className="comments">
-  <span className="CommentName">{coment.name}</span>{coment.commentBody} 
+        <div className="comments p-2">
           
-            {isLoggedUser(index) ? (
+  <img className=" rounded-5 mb-2" style={{width:35,height:35}} src={coment.image}/><span className="CommentName">{coment.name}
+  {isLoggedUser(index) ? (
           
           
           <a className="mb-5 btn text-danger float-end  " >
@@ -125,6 +124,13 @@ console.log(users)
         
         
       ):""}
+  </span>
+  <div>
+  {coment.commentBody} 
+
+  </div>
+          
+       
 
         </div>
     )
